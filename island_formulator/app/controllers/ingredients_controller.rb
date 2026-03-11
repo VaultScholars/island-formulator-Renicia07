@@ -1,5 +1,5 @@
+
 class IngredientsController < ApplicationController
-  before_action :require_authentication
   before_action :set_ingredient, only: %i[ show edit update destroy ]
 
   # GET /ingredients or /ingredients.json
@@ -13,7 +13,7 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients/new
   def new
-    @ingredient = current_user.ingredients.build
+    @ingredient = Ingredient.new
   end
 
   # GET /ingredients/1/edit
@@ -22,7 +22,7 @@ class IngredientsController < ApplicationController
 
   # POST /ingredients or /ingredients.json
   def create
-    @ingredient = current_user.ingredients.build(ingredient_params)
+    @ingredient = Ingredient.new(ingredient_params)
 
     respond_to do |format|
       if @ingredient.save
@@ -66,7 +66,6 @@ class IngredientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ingredient_params
-      params.expect(ingredient: [ :name, :category, :description, :notes ])
       # Add tag_ids: [] to the permit list
       # The [] means we are expecting an ARRAY of IDs (since you can check multiple boxes).
       # Note: tag_ids: [] must be the LAST parameter in the permit() call
