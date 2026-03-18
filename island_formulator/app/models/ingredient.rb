@@ -8,4 +8,5 @@ class Ingredient < ApplicationRecord
   validates :category, presence: true
   validates :user, presence: true  # Ensures no orphaned ingredients
 
+  has_one_attached :photo
 end

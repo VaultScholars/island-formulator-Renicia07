@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :recipes
   get "users/new"
   get "users/create"
   resources :passwords, param: :token
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
 end
 
 Rails.application.routes.draw do
+  resources :recipes
   get "users/new"
   get "users/create"
   resources :passwords, param: :token
