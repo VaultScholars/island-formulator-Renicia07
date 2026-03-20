@@ -57,10 +57,12 @@ ingredients = [
   }
 ]
 
+# db/seeds.rb
+
 # First, create a default user (or find if it already exists)
-user = User.find_or_create_by!(email_address: "ren@example.com") do |u|
-  u.password = "renalwayswins3"
-  u.password_confirmation = "renalwayswins3"
+user = User.find_or_create_by!(email_address: "demo@example.com") do |u|
+  u.password = "password123"
+  u.password_confirmation = "password123"
 end
 
 puts "Created demo user: #{user.email_address}"
@@ -83,7 +85,6 @@ end
 
 puts "Created #{user.ingredients.count} ingredients for demo user!"
 
-# db/seeds.rb
 Tag.destroy_all # Clean up old tags if they exist
 
 tags = [

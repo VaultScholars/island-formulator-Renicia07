@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
-      session[:user_id] = user_id
       start_new_session_for user
       redirect_to after_authentication_url
     else
@@ -16,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    terminate_session
     redirect_to new_session_path, status: :see_other
   end
 end
