@@ -44,5 +44,4 @@ Rails.application.routes.draw do
   resources :inventory_items
   resources :batches, only: [:index, :show, :new, :create, :destroy]
   
-  root "ingredients#index"
 end

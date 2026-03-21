@@ -57,9 +57,8 @@ ingredients = [
   }
 ]
 
-# db/seeds.rb
 
-# First, create a default user (or find if it already exists)
+# Create a default user (or find if it already exists)
 user = User.find_or_create_by!(email_address: "demo@example.com") do |u|
   u.password = "password123"
   u.password_confirmation = "password123"
