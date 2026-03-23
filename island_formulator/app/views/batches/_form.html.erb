@@ -1,6 +1,6 @@
 <%= form_with(model: batch, class: "contents") do |form| %>
   <% if batch.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+    <div id="error_explanation" class="bg-red-100 text-red-900 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
 
       <ul class="list-disc ml-6">

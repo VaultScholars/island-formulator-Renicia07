@@ -1,6 +1,6 @@
 <%= form_with(model: ingredient, class: "contents") do |form| %>
   <% if ingredient.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+    <div id="error_explanation" class="bg-red-100 text-red-900 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
 
       <ul class="list-disc ml-6">
@@ -11,43 +11,43 @@
     </div>
   <% end %>
 
-  <div class="bg-white shadow p-6 rounded-lg">
-  <%= form.label :photo, "Ingredient Photo", class: "block font-bold text-gray-700 mb-2" %>
+  <div class="bg-orange-200 shadow p-6 rounded-lg">
+  <%= form.label :photo, "Ingredient Photo", class: "block font-bold text-yellow-950 mb-2" %>
   <div class="flex items-center justify-center w-full">
-    <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+    <label class="flex flex-col items-center justify-center w-full h-32 border-2 border-orange-300 border-dashed rounded-lg cursor-pointer bg-orange-200 hover:bg-orange-100">
       <div class="flex flex-col items-center justify-center pt-5 pb-6">
-        <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+        <svg class="w-8 h-8 mb-4 text-yellow-950" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
         </svg>
-        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-        <p class="text-xs text-gray-500">PNG, JPG or GIF</p>
+        <p class="mb-2 text-sm text-yellow-950"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+        <p class="text-xs text-yellow-950">PNG, JPG or GIF</p>
       </div>
       <%= form.file_field :photo, accept: "image/*", class: "hidden" %>
     </label>
   </div>
   <% if ingredient.photo.attached? %>
-    <p class="mt-2 text-sm text-green-600">✓ Current photo: <%= ingredient.photo.filename %></p>
+    <p class="mt-2 text-sm text-yellow-950">✓ Current photo: <%= ingredient.photo.filename %></p>
   <% end %>
 </div>
 
   <div class="my-5">
     <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": ingredient.errors[:name].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:name].any?}] %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-amber-900": ingredient.errors[:name].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:name].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :category %>
-    <%= form.text_field :category, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": ingredient.errors[:category].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:category].any?}] %>
+    <%= form.text_field :category, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-amber-950 focus:outline-amber-900": ingredient.errors[:category].none?, "border-red-400 focus:outline-red-900": ingredient.errors[:category].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :description %>
-    <%= form.textarea :description, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": ingredient.errors[:description].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:description].any?}] %>
+    <%= form.textarea :description, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-amber-950 focus:outline-amber-900": ingredient.errors[:description].none?, "border-red-400 focus:outline-red-900": ingredient.errors[:description].any?}] %>
   </div>
 
   <div class="my-5">
     <%= form.label :notes %>
-    <%= form.textarea :notes, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": ingredient.errors[:notes].none?, "border-red-400 focus:outline-red-600": ingredient.errors[:notes].any?}] %>
+    <%= form.textarea :notes, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-amber-950 focus:outline-amber-900": ingredient.errors[:notes].none?, "border-red-400 focus:outline-red-900": ingredient.errors[:notes].any?}] %>
   </div>
 
 <div class="mb-4">
@@ -62,7 +62,7 @@
     %>
     <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name do |cb| %>
       <div class="flex items-center">
-        <%= cb.check_box class: "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
+        <%= cb.check_box class: "w-4 h-4 text-lime-900 font-bold border-amber-900 rounded focus:ring-orange-300" %>
         <%= cb.label class: "ml-2 text-sm text-gray-700" %>
       </div>
     <% end %>
@@ -70,6 +70,6 @@
 </div>
 
   <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-red-900 hover:bg-orange-200 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
