@@ -41,10 +41,10 @@
         <% @recent_recipes.each do |recipe| %>
           <div class="p-4 flex justify-between items-center">
             <div>
-              <%= link_to recipe.title, recipe, class: "text-yellow-600 hover:underline font-medium" %>
-              <p class="text-xs text-yellow-600"><%= recipe.product_type %></p>
+              <%= link_to recipe.title, recipe, class: "text-lime-900 hover:underline font-medium" %>
+              <p class="text-xs text-lime-900"><%= recipe.product_type %></p>
             </div>
-            <span class="text-sm text-yellow-600"><%= recipe.created_at.strftime("%b %d") %></span>
+            <span class="text-sm text-taupe-900"><%= recipe.created_at.strftime("%b %d") %></span>
           </div>
         <% end %>
         <% if @recent_recipes.empty? %>
