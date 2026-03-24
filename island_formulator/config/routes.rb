@@ -38,10 +38,14 @@ Rails.application.routes.draw do
   # immediately after logging in.
   root "dashboards#show"
   
+   resources :recipes do
+    resource :favorite, only: [:create, :destroy] 
+   end
+   
   # Your other routes
   resources :ingredients
   # New Week 4 resources
   resources :inventory_items
   resources :batches, only: [:index, :show, :new, :create, :destroy]
-  
+
 end

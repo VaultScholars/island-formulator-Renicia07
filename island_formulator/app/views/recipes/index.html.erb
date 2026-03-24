@@ -23,13 +23,26 @@
             </div>
           <% end %>
           
-          <div class="p-4">
-            <h2 class="text-xl font-bold mb-2"><%= link_to recipe.title, recipe, class: "text-taupe-950 hover:text-stone-800" %></h2>
-            <span class="inline-block bg-orange-200 text-yellow-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide">
-              <%= recipe.product_type %>
-            </span>
-            <p class="text-yellow-800 text-sm mt-2"><%= pluralize(recipe.ingredients.count, 'ingredient') %></p>
-          </div>
+        <div class="p-4">
+          <div class="flex justify-between items-center">
+            <h2 class="text-xl font-bold mb-2">
+              <%= link_to recipe.title, recipe, class: "text-taupe-950 hover:text-stone-800" %> </h2>
+
+            <% if current_user.favorites.exists?(recipe: recipe) %>
+              <%= button_to "❤️", recipe_favorite_path(recipe), class: "text-xl" %>
+            <% else %>
+              <%= button_to "💔", recipe_favorite_path(recipe), method: :delete, class: "text-xl" %>
+            <% end %>
+        </div>
+
+  <span class="inline-block bg-orange-200 text-yellow-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide">
+    <%= recipe.product_type %>
+  </span>
+
+  <p class="text-yellow-800 text-sm mt-2">
+    <%= pluralize(recipe.ingredients.count, 'ingredient') %>
+  </p>
+</div>
         </div>
       <% end %>
     </div>
