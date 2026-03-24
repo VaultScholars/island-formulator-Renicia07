@@ -4,16 +4,20 @@ class BatchesController < ApplicationController
 
   # GET /batches or /batches.json
   def index
-    @batches = Batch.all
+    @batches = current_user.batches.includes(:recipe).order(made_on: :desc)
   end
 
   # GET /batches/1 or /batches/1.json
   def show
+    @batches = current_user.batches.find(params[:id])
   end
 
   # GET /batches/new
   def new
-    @batch = Batch.new
+     @batch = current_user.batches.build(
+      recipe_id: params[:recipe_id],
+      made_on: Date.today
+    )
   end
 
   # GET /batches/1/edit
@@ -22,7 +26,7 @@ class BatchesController < ApplicationController
 
   # POST /batches or /batches.json
   def create
-    @batch = Batch.new(batch_params)
+    @batch = current_user.batches.build(batch_params)
 
     respond_to do |format|
       if @batch.save
@@ -66,6 +70,6 @@ class BatchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def batch_params
-      params.fetch(:batch, {})
-    end
+      params.require(:batch).permit(:recipe_id, :made_on, :notes)
+  end
 end

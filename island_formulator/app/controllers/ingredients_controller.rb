@@ -72,9 +72,4 @@ class IngredientsController < ApplicationController
       # Note: tag_ids: [] must be the LAST parameter in the permit() call
       params.expect(ingredient: [ :name, :category, :description, :notes, tag_ids: [] ])
     end
-
-    def ingredient_params
-      params.require(:ingredient).permit(:name, :category, :description, :photo)
-    end
-
 end
