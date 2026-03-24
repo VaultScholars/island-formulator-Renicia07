@@ -66,3 +66,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# For DigitalOcean Spaces (S3-compatible storage)
+gem "aws-sdk-s3", require: false
