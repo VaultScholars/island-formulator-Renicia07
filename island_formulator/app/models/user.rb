@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy #This allows us to call current_user.recipes to get all recipes belonging to the logged-in user
   has_many :inventory_items, dependent: :destroy
   has_many :batches, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :favorite_recipes, through: :favorites, source: :recipe
+  has_many :favorites, dependent: :destroy #One user can have many favorites and once this user is deleted, all favorites for that user is also destroyed
+  has_many :favorite_recipes, through: :favorites, source: :recipe #User can have many favorite recipes through the join table: favorites
 
   def favorited?(recipe)
     favorites.exists?(recipe: recipe)
