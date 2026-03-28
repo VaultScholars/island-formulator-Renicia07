@@ -46,10 +46,10 @@
     <%# Right side - Auth links %>
     <div class="flex items-center gap-4">
       <% if authenticated? %>
-        <span class="text-sm text-orange-900">
+        <%= button_to "Logout", session_path, method: :delete, class: "px-5 py-2 text-sm font medium semibold text-red-950 hover:text-red-900 hover:bg-orange-100 rounded-lg transition-colors" %>
+        <span class="text-sm text-red-950 underline">
           <%= Current.user.email_address %>
         </span>
-        <%= button_to "Logout", session_path, method: :delete, class: "px-5 py-2 text-sm font medium text-red-950 hover:text-red-900 hover:bg-red-50 rounded-lg transition-colors" %>
       <% else %>
         <%= link_to "Sign Up", new_user_path, class: "px-4 py-2 text-sm font-medium text-white bg-lime-800 hover:bg-orange-100 rounded-lg transition-colors" %>
         <%= link_to "Login", new_session_path, class: "px-4 py-2 text-sm font-medium text-taupe-900 hover:text-taupe-900 hover:bg-yellow-200 rounded-lg transition-colors" %>
