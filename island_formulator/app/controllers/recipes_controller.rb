@@ -67,4 +67,8 @@ class RecipesController < ApplicationController
   )
   end
 
+  def favorites 
+    # fetch the current user's favorite recipes 
+    @favorited_recipes = current_user.favorite_recipes 
+  end
 end

@@ -12,4 +12,17 @@ class FavoritesController < ApplicationController
     favorite.destroy if favorite
     redirect_to recipes_path
   end
+
+
+
+
+
+
+
+
+
+
+
+
+  
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "users/create"
   resources :passwords, param: :token
   resources :ingredients
+  get "/favorites", to: "recipes#favorites", as: :favorites
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -41,11 +42,21 @@ Rails.application.routes.draw do
    resources :recipes do
     resource :favorite, only: [:create, :destroy] 
    end
-   
+
   # Your other routes
   resources :ingredients
+
   # New Week 4 resources
   resources :inventory_items
   resources :batches, only: [:index, :show, :new, :create, :destroy]
 
+   # Get all the favorites of the current_user
+    resources :recipes do
+    collection do
+      get :favorites
+    end
+  end
+
 end
+
+
